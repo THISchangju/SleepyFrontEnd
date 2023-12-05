@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규표현식</title>
+    <style>
+        .area {
+            background-color: #ccc;
+            border: 1px solid black;
+            height: 150px;
+        }
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <h1>객체 조작2</h1>
+    <h3>문서 객체에 문서 객체를 추가하는 메소드</h3>
+    <h4>삽입 메소드 part1</h4>
+    A : 기존태그, B : 추가할태그 <br>
+    <p>
+        $(A).append(B) : B를 A의 뒷부분에 추가 <br>
+        $(A).after(B) : B를 A의 뒤에 추가 <br>
+
+        $(A).prepend(B) : B를 A의 내부문자 앞부분에 추가(자식으로) <br>
+        $(A).append(B) : B를 A의 앞부분에 추가 <br>
+    </p>
+    <div id="div1">
+        <p id="p01">test1</p>
+        <p id="p02">test2</p>
+        <p id="p03">test3</p>
+        <p id="p04">test4</p>
+    </div>
+    <button id="append">append</button>
+    <button id="after">after</button>
+    <button id="prepend">prepend</button>
+    <button id="before">before</button>
+    <br><br><br>
+    <p>
+        A : 추가할태그, B : 기존태그 <br>
+        $ (A).appendTo(B) : A를 B의 내부문자 뒷부분에 추가(자식으로) <br>
+        $ (A).insertAfter(B) : A를 B의 뒤에 추가(같은 레벨로) <br>
+
+        $ (A).prependTo(B) : A를 B의 내부문자 앞부분에 추가(자식으로) <br>
+        $ (A).insertBefore(B) : A를 B의 앞부분에 추가 <br><br><br>
+    </p>
+        <p id="p05">test5</p>
+        <p id="p06">test6</p>
+        <p id="p07">test7</p>
+        <p id="p08">test8</p>
+        <button id="appendTo">appendTo</button>
+        <button id="insertAfter">insertAfter</button>
+        <button id="prependTo">prependTo</button>
+        <button id="insertBefore">insertBefore</button>
+        <br><br><br>
+        <h3>문서 객체의 제거</h3>
+        <h4>remove() 메소드</h4>
+        <p>특정 문서 객체를 제거함</p>
+        <h4>empty() 메소드</h4>
+        <p>특정 문서의 후손을 제거함</p>
+        <div id="div1-empty">
+            <h1 id="h1">test1</h1>
+            <h1 id="h2">test2</h1>
+            <h1 id="h3">test3</h1>
+        </div>
+        <button id="remove">제거하기</button>
+        <button id="empty">후손 제거하기</button>
+        <br><br><br>
+    <script>
+        // remove(), empty() 메소드
+        $("#remove").on("click", function(){
+            $("#h1").remove();
+        });
+        $("#empty").on("click", function(){
+            $("#div1-empty").empty();
+        })
+        // 삽입 part2
+        $("#appendTo").on("click",function(){
+            $("<span>appendTo 추가</span>").appendTo("#p05");
+        });
+        $("#insertAfter").on("click",function(){
+            $("<span>insertAfter 추가</span>").insertAfter("#p06");
+        });
+        $("#prependTo").on("click",function(){
+            $("<span>prependTo 추가</span>").prependTo("#p07");
+        });
+        $("#insertBefore").on("click",function(){
+            $("<span>insertBefore 추가</span>").insertBefore("#p08");
+        });
+
+
+        // 삽입 part1
+        $("#append").on("click", function(){
+            // B를 A의 내부문자 뒷부분에 추가(자식으로)
+            $("#p01").append("<span>append추가</apan>");
+        });
+        $("#after").on("click", function() {
+            // B를 A의 뒤에 추가(같은 레벨로, 형제/자매로)
+            $("#p02").after("<span>append추가</apan>");
+        });
+        $("#prepend").on("click", function() {
+            $("#p03").prepend("<span>append추가</apan>");
+        });
+        $("#before").on("click", function() {
+            $("#p03").before("<span>brfore가</apan>");
+        });
+        
+
+    </script>
+</body>
+</html>

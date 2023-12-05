@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery each() 메소드1</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <select name="" id="">
+        <option value="1">1번</option>
+        <option value="2">2번</option>
+        <option value="3">3번</option>
+    </select>
+    <br>
+    <input type="button" value="select 버튼 확인" id="selectBtn">
+    <script>
+        $("#selectBtn").on("click", function(){
+            var selectedTag
+            = $("option").filter(":selected");
+            console.log($(selectedTag).text());
+            console.log($(selectedTag).val());
+        // $("#selectBtn").on("click", function(){
+        //     $("option").each(function(index, item) {
+        //         if($(item).is(":selected")) {
+        //             console.log($(item).text());
+        //             console.log($(item).val());
+        //     }
+        // });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuery each() 메소드2</title>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+            <style>
+                table {
+                    border-collapse: collapse;
+                }
+                th, td {
+                    border: 1px solid black;
+                }
+                fieldset {
+                    width: 500px;
+                    height: 500px;
+                }
+            </style>
+        <script>
+            // window.onload = function() {
+            $(function(){
+            // $("#btn").on("click", function(){
+            //     var thTags = $("th")
+            //     var count = 0;
+            //     $("td").each(function(index,item){
+            //         $("#span1").html($("#span1").html()+thTags.eq(count).text() + ":" + $(item).html() + "<br>");
+            //         count++
+            //         if(count==3){
+            //             count=0;
+            //         }
+            //         // console.log($(item).html());
+            //     });
+            // });
+
+            // 같이 푼거
+                        // tr버전
+            $("#btn").on("click", function(){
+                var display = "";
+                $("tr").each(function(index, item){
+                    
+                    if(index > 0) { // 첫번째행 제외
+                        var trTag = $(item);
+                        var name = trTag.children().first().text();
+                        var age = trTag.children().eq(1).text();
+                        var addr = trTag.children().last().text();
+                        display += name + "," + age + "," + addr + "<br>"
+                    }
+                });
+                            // td버전
+                    // $("td").each(function(index, item) {
+                    //     display += $(item).html(); // index가 2, 5, 8, 11일때는 "<br>", 나머지의 경우에는 ,
+                    //     // +=쓰는 이유
+                    //     // a = a + 1
+                    //     // a += 1;
+                    //     // a++
+                    //     // tag.innerHTML = tag.innerHTML + "<h1>11</h1>";
+                    //     // tag.innerHTML += "<h1>11</h1>";
+                    //         if(index % 3 == 2) {
+                    //             display += "<br>";
+                    //         }else{
+                    //             display += ",";
+                    //         }
+                    //     });
+                    $("#span1").html(display);
+                });
+            });
+        </script>
+    </head>
+    <body>
+        문제. <br>
+        학생정보 출력 버튼을 클릭시 테이블에 있는 학생 정보가 <br>
+        fieldset 안에 출력되도록 만드시오! <br>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+            <tr>
+                <td>홍길동</td>
+                <td>20</td>
+                <td>서울시</td>
+            </tr>
+            <tr>
+                <td>고길동</td>
+                <td>30</td>
+                <td>경기도</td>
+            </tr>
+            <tr>
+                <td>최길동</td>
+                <td>40</td>
+                <td>화성시</td>
+            </tr>
+            <tr>
+                <td>상길동</td>
+                <td>50</td>
+                <td>부천시</td>
+            </tr>
+        </table>
+        <fieldset>
+            <legend>출력</legend>
+            <span id="span1"></span>
+        </fieldset>
+        <button id="btn">학생정보 출력</button>
+    </body>
+</html>

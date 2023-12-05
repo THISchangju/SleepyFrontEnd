@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>jQuery filter() 메소드2</title>
+        <style>
+            table {
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 3px solid rgb(124, 11, 134);
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script>
+            function clear() {
+                $("table td").css("color", "black"); 
+                // 함수로 줘서 $("table td").css("color", "black");을 한번만 쓰고 원래 써야하는 자리에 clear();을 대신 써줌
+            }
+            window.onload = function() {
+            var tdTags = $("td");
+            console.log(tdTags)
+            // document.querySelector("#click").addEventListener("click", function(){  
+            // })   document.querySelector대신 $(), .addEventListener대신 .on()
+            $("#click1").on("click", function() {
+                // alert("click1");
+                clear();
+                // $("td").eq(1).css("color", "red");
+                // $("td").eq(2).css("color", "red");
+                // $("td:eq(1)").css("color", "red");
+                // $("td:eq(2)").css("color", "red"); // 선택자로 하는게 더 빠름
+                $("tr:eq(1)").children("td").not(":first-child").css("color", "red"); // children과 not을 조합해서 사용 가능
+            });
+            $("#click2").on("click", function() {
+                // alert("click2");
+                clear();
+                $("tr:eq(2)").children("td").not(":first-child").css("color", "blue");
+                // $("td").eq(4).css("color", "blue");
+                // $("td").eq(5).css("color", "blue");
+            });
+        }
+        // window.inload밖에서 사용해야함
+        function click3() {
+            // alert("click3");
+            clear();
+            $("td").eq(4).css("color", "red");
+            $("td").eq(1).css("color", "red");
+        }
+        function click4() {
+            // alert("click4");
+            clear();
+            $("td").eq(2).css("color", "blue");
+            $("td").eq(5).css("color", "blue");
+        }
+        </script>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th>구분</th>
+                <th>A</th>
+                <th>B</th>
+            </tr>
+            <tr>
+                <td>가</td>
+                <td>10</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>나</td>
+                <td>20</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>계</td>
+                <td>30</td>
+                <td>30</td>
+            </tr>
+        </table>
+        <input type="button" value="[가]색 변경" id="click1">
+        <input type="button" value="[나]색 변경" id="click2">
+        <input type="button" value="[A]색 변경" onclick="click3();">
+        <input type="button" value="[B]색 변경" onclick="click4();">
+    </body>
+</html>
