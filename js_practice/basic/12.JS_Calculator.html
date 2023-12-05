@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 실습</title>
+</head>
+<body>
+    <h2>간이 계산기 만들기</h2>
+    첫번째 값 : <input type="text" id="input1"> <br>
+    두번째 값 : <input type="text" id="input2"> <br>
+    <button onclick="calculate('+')">+</button>
+    <button onclick="calculate('-')">-</button>
+    <button onclick="calculate('*')">*</button>
+    <button onclick="calculate('/')">/</button>
+    <button onclick="calculate('%')">%</button>
+
+    <br><br>
+    계산결과 : <span id="result"></span>
+    <script>
+        //calculate is not defined
+        function calculate(operator) {
+        var num1 = parseInt(document.querySelector("#input1").value);
+        var num2 = parseInt(document.querySelector("#input2").value);
+        var result = 0;
+        result = num1 + num2;
+        switch(operator) {
+            case '+' : result = num1 + num2; break;
+            case '-' : result = num1 - num2; break;
+            case '*' : result = num1 * num2; break;
+            case '/' : result = num1 / num2; break;
+            case '%' : result = num1 % num2; break;
+        }
+        document.querySelector("#result")
+        .innerHTML = result;
+            // 1. 두개의 값을 가져와 변수에 저장
+            // 2. 조건문으로 연산자별 결과를 다르게 처리
+            // 3. 결과값을 #result에 출력
+        }
+    </script>
+</body>
+</html>

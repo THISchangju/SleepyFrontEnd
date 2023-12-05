@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        img {
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+    <script>
+        // 인라인 이벤트 모델의 경우 위치에 영향 받지 않음.
+        function changeImage(){
+        var sel = document.getElementById("sel");
+        var img = document.getElementById("myImg");
+        // var index = sel.selectedIndex;
+        // var imgPath = sel.options[index].value;
+        var imgPath = sel.value
+        img.src = imgPath;
+        }
+    </script>
+</head>
+<body>     
+    <select id="sel" onchange="changeImage()">
+    <option value="img/lemons.jpg">레몬</option>
+    <option value="img/line.jpg">라임</option>
+    <option value="img/strawberry.jpg">딸기</option>
+</select>
+    
+    <img id="myImg">
+</body>
+</html>

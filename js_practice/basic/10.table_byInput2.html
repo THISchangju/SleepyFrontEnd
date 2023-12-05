@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자동 테이블 만들기</title>
+    <style>
+        table {
+            border: 1px solid #222;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #222;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>자리 배치도</h1>
+    <script>
+        // 1. document.write 이용해서 테이블 만들기
+        // 2. 테이블을 만들었으면 CSS 적용하지
+        // 3. 제어문 적용하기(for문)
+        // 4. 입력값에 따라서 테이블이 생성되도록 하기
+    var customer = prompt("입장객은 몇 명인가요?");
+    var colNum = prompt("한 줄에 몇 명씩 앉습니까?");
+    var rowNum = Math.ceil(customer/colNum); //계산 필요
+    var count = 1; //선언 및 초기화(=1)
+        document.write("<table>");
+                for(var i = 0; i < rowNum; i++) {
+                document.write("<tr>");
+                    for(var j = 0; j < colNum; j++) {
+                        if(count > customer) break;
+                        //break;
+                        document.write("<td>"+"좌석"+count+"</td>");
+                        count++;
+                }
+                document.write("</tr>");
+        }
+        document.write("<table>");
+    </script>
+</body>
+</html>

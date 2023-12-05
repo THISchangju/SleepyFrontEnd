@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <body>
+        <h1>이벤트핸들러(함수) 테스트</h1>
+        <h3>실습1 : select에서 색이름을 선택하면 body의 배경색이 바뀌도록 함</h3>
+        배경색 선택 :
+        <select onchange="changeBg(this) /*여기 안으로 줘야힘*/;">
+            <option value="white">흰색</option>
+            <option value="yellow">노란색</option>
+            <option value="red">빨간색</option>
+            <option value="green">녹색</option>
+            <option value="blue">파랑색</option>
+        </select>
+        <br><br>
+        <h1 id="h1">Range값을 변경하면 바뀜</h1>
+        <h3>실습2 : range의 값이 변경되면 h1 태그의 글자크기가 변경되도록
+            글자크기 선택 : <input type="range" min="10" max="100" step="5" id="textSize">
+            <h3>실습3 : 값을 입력하고 확인 버튼을 누르면 입력값으로 제목글자를 바꿈</h3>
+            <h1 id="h1Title">제목글자를 바꾸세요</h1>
+            <input type="text" name="" id="input">
+            <input type="button" value="확인" id="ok">
+            <script>
+                function changeBg(obj) {
+                    var color = 
+                    // document.querySelector("select").value;
+                    // 인라인 이벤트 모델은 this를 스크립트에서 못 주고 위의 12번째줄
+                    obj.value;
+                    document.querySelector("body")
+                    .style.backgroundColor = color;
+                }
+                document.querySelector("#textSize")
+                .addEventListener("change",function(){
+                    // 1. 이벤트가 발생한 태그 : input
+                    // 2. 이벤트 발생한 태그에서 값을 가져올 때
+                    // => this키워드 사용가능
+                    var range = this.value; // document.querySelector("#textSize").value;쓰지 않고 this.value로 이벤트 사용 가능
+                    document.querySelector("#h1")
+                    .style.fontSize = range+"pt";
+                });
+                document.querySelector("#ok")
+                .addEventListener("click",function(){
+                    var inputVal =
+                    document.querySelector("#input").value;
+                    document.querySelector("#h1Title")
+                    .innerHTML = inputVal;
+                    document.querySelector("#input")
+                    .value = ""
+                });
+            </script>
+        </h3>
+    </body>
+</html>
